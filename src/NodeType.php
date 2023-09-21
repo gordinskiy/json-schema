@@ -10,6 +10,7 @@ namespace Gordinskiy\JsonSchema;
 enum NodeType: string
 {
     case String = 'string';
+    case Integer = 'integer';
     case Number = 'number';
     case Object = 'object';
     case Array = 'array';
