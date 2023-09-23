@@ -7,6 +7,7 @@ namespace Gordinskiy\Tests\Enum;
 use Gordinskiy\JsonSchema\Enum\EnumSchema;
 use Gordinskiy\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Webmozart\Assert\InvalidArgumentException;
 
 final class EnumSchemaTest extends TestCase
 {
@@ -31,7 +32,7 @@ final class EnumSchemaTest extends TestCase
         ];
         yield 'Enum schema without constrains. One of floats' => [
             'value' => 3.14,
-            'schema' => new EnumSchema(3.5, 9,9, 3.14),
+            'schema' => new EnumSchema(3.5, 9.9, 3.14),
         ];
         yield 'Enum schema without constrains. One of strings' => [
             'value' => 'Thursday',
@@ -76,7 +77,7 @@ final class EnumSchemaTest extends TestCase
         ];
         yield 'Enum schema without constrains. Not one of floats' => [
             'value' => 2.19,
-            'schema' => new EnumSchema(3.5, 9,9, 3.14),
+            'schema' => new EnumSchema(3.5, 9.9, 3.14),
         ];
         yield 'Enum schema without constrains. Not one of strings' => [
             'value' => 'March',
@@ -94,5 +95,13 @@ final class EnumSchemaTest extends TestCase
             'value' => null,
             'schema' => new EnumSchema(2, [8,9], [2,4,8], 3.14),
         ];
+    }
+
+    public function test_empty_enum_creation(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Enum must contain at least one element.');
+
+        new EnumSchema();
     }
 }

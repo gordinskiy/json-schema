@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Gordinskiy\JsonSchema\Enum;
 
 use Gordinskiy\JsonSchema\SchemaNodeInterface;
+use Webmozart\Assert\Assert;
 
 /**
  * Typeless enum
@@ -15,6 +16,11 @@ final readonly class EnumSchema implements SchemaNodeInterface
     private array $values;
     public function __construct(mixed ...$values)
     {
+        Assert::notEmpty(
+            value: $values,
+            message: 'Enum must contain at least one element.'
+        );
+
         $this->values = $values;
     }
 
