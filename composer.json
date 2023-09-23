@@ -1,12 +1,12 @@
 {
     "name": "gordinskiy/json-schema",
-    "type": "library",
     "description": "A library to generate JSON Schema",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "json",
         "schema"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Dmitriy Gordinskiy",
@@ -15,10 +15,11 @@
     ],
     "require": {
         "php": ">=8.2",
-        "justinrainbow/json-schema": "^5.2"
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.31",
+        "justinrainbow/json-schema": "^5.2",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.1",
         "vimeo/psalm": "^5.11"
