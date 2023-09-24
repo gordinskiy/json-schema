@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="8"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="true"
+>
+    <projectFiles>
+        <directory name="src"/>
+    </projectFiles>
+
+    <issueHandlers>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <file name="src/Boolean/BooleanSchema.php"/>
+                <file name="src/String/StringSchema.php"/>
+                <file name="src/Numeric/IntegerSchema.php"/>
+                <file name="src/Numeric/NumberSchema.php"/>
+                <file name="src/Enum/EnumSchema.php"/>
+                <file name="src/Enum/EnumSchema.php"/>
+            </errorLevel>
+        </UnusedClass>
+
+        <UnusedMethod>
+            <errorLevel type="suppress">
+                <file name="src/Numeric/AbstractNumericSchema.php"/>
+            </errorLevel>
+        </UnusedMethod>
+    </issueHandlers>
+</psalm>
