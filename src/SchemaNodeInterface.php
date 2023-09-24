@@ -6,4 +6,8 @@ namespace Gordinskiy\JsonSchema;
 
 interface SchemaNodeInterface extends \JsonSerializable
 {
+    /**
+     * @return array<string, mixed>
+     */
+    public function jsonSerialize(): array;
 }
