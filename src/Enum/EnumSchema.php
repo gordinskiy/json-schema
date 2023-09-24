@@ -13,7 +13,9 @@ use Webmozart\Assert\Assert;
  */
 final readonly class EnumSchema implements SchemaNodeInterface
 {
+    /** @var array<mixed> */
     private array $values;
+
     public function __construct(mixed ...$values)
     {
         Assert::notEmpty(
