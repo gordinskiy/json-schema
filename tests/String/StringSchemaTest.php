@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Gordinskiy\Tests\String;
 
+use Gordinskiy\JsonSchema\String\StringFormat;
 use Gordinskiy\JsonSchema\String\StringSchema;
 use Gordinskiy\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -217,5 +218,38 @@ final class StringSchemaTest extends TestCase
         $this->expectExceptionMessage('String min length constrain cant be greater than max length constrain.');
 
         new StringSchema(minLength: 100, maxLength: 5);
+    }
+
+    #[DataProvider('valid_string_schema_provider')]
+    public function test_json_schema_format(StringSchema $schemaObject, string $expectedResult): void
+    {
+        self::assertSame(
+            expected: $expectedResult,
+            actual: json_encode($schemaObject),
+        );
+    }
+
+    public static function valid_string_schema_provider(): \Generator
+    {
+        yield 'Schema without constraints' => [
+            'Object' => new StringSchema(),
+            'Expected result' => '{"type":"string"}',
+        ];
+        yield 'Schema with min length constraint' => [
+            'Object' => new StringSchema(minLength: 100),
+            'Expected result' => '{"type":"string","minLength":100}',
+        ];
+        yield 'Schema with max length constraint' => [
+            'Object' => new StringSchema(maxLength: 24),
+            'Expected result' => '{"type":"string","maxLength":24}',
+        ];
+        yield 'Schema with pattern constraint' => [
+            'Object' => new StringSchema(pattern: '^[0-9]{5}(?:-[0-9]{4})?$'),
+            'Expected result' => '{"type":"string","pattern":"^[0-9]{5}(?:-[0-9]{4})?$"}',
+        ];
+        yield 'Schema with format constraint' => [
+            'Object' => new StringSchema(format: StringFormat::Email),
+            'Expected result' => '{"type":"string","format":"email"}',
+        ];
     }
 }

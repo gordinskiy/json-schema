@@ -97,6 +97,31 @@ final class EnumSchemaTest extends TestCase
         ];
     }
 
+    #[DataProvider('valid_enum_schema_provider')]
+    public function test_json_schema_format(EnumSchema $schemaObject, string $expectedResult): void
+    {
+        self::assertSame(
+            expected: $expectedResult,
+            actual: json_encode($schemaObject),
+        );
+    }
+
+    public static function valid_enum_schema_provider(): \Generator
+    {
+        yield 'Schema with list of integers' => [
+            'Object' => new EnumSchema(100, 12, 35),
+            'Expected result' => '{"enum":[100,12,35]}',
+        ];
+        yield 'Schema with list of floats' => [
+            'Object' => new EnumSchema(3.145, 9.999, 3.333),
+            'Expected result' => '{"enum":[3.145,9.999,3.333]}',
+        ];
+        yield 'Schema with list of string' => [
+            'Object' => new EnumSchema('March', 'May', 'April'),
+            'Expected result' => '{"enum":["March","May","April"]}',
+        ];
+    }
+
     public function test_empty_enum_creation(): void
     {
         $this->expectException(InvalidArgumentException::class);

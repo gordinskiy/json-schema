@@ -49,4 +49,21 @@ final class BooleanSchemaTest extends TestCase
         yield [1];
         yield [1.0];
     }
+
+    #[DataProvider('valid_boolean_schema_provider')]
+    public function test_json_schema_format(BooleanSchema $schemaObject, string $expectedResult): void
+    {
+        self::assertSame(
+            expected: $expectedResult,
+            actual: json_encode($schemaObject),
+        );
+    }
+
+    public static function valid_boolean_schema_provider(): \Generator
+    {
+        yield 'Schema without constraints' => [
+            'Object' => new BooleanSchema(),
+            'Expected result' => '{"type":"boolean"}',
+        ];
+    }
 }
