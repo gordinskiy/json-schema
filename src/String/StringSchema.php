@@ -44,12 +44,12 @@ final readonly class StringSchema implements SchemaNodeInterface
 
     public function jsonSerialize(): array
     {
-        return [
+        return array_filter([
             'type' => NodeType::String->value,
             'minLength' => $this->minLength,
             'maxLength' => $this->maxLength,
             'pattern' => $this->pattern,
             'format' => $this->format,
-        ];
+        ], static fn (mixed $value) => $value !== null);
     }
 }
