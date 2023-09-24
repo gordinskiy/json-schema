@@ -13,9 +13,9 @@ final readonly class NumberSchema extends AbstractNumericSchema
 {
     public function jsonSerialize(): array
     {
-        return [
-            'type' => NodeType::Integer->value,
+        return array_filter([
+            'type' => NodeType::Number->value,
             ...parent::jsonSerialize(),
-        ];
+        ], static fn (mixed $value) => $value !== null);
     }
 }
