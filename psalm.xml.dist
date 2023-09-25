@@ -20,12 +20,17 @@
                 <file name="src/Numeric/NumberSchema.php"/>
                 <file name="src/Enum/EnumSchema.php"/>
                 <file name="src/Enum/EnumSchema.php"/>
+                <file name="src/Composition/NotSchema.php"/>
+                <file name="src/Composition/AllOfSchema.php"/>
+                <file name="src/Composition/AnyOfSchema.php"/>
+                <file name="src/Composition/OneOfSchema.php"/>
             </errorLevel>
         </UnusedClass>
 
         <UnusedMethod>
             <errorLevel type="suppress">
                 <file name="src/Numeric/AbstractNumericSchema.php"/>
+                <file name="src/Composition/AbstractCompositionSchema.php"/>
             </errorLevel>
         </UnusedMethod>
     </issueHandlers>
