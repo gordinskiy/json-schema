@@ -37,6 +37,10 @@ final class NumberSchemaTest extends TestCase
             'Object' => new NumberSchema(exclusiveMinimum: 49.9),
             'Expected result' => '{"type":"number","exclusiveMinimum":49.9}',
         ];
+        yield 'Schema with exclusive minimum constraints (Draft-4 style)' => [
+            'Object' => new NumberSchema(minimum: 49.9, exclusiveMinimum: true),
+            'Expected result' => '{"type":"number","minimum":49.9,"exclusiveMinimum":true}',
+        ];
         yield 'Schema with maximum constraints' => [
             'Object' => new NumberSchema(maximum: 10.6),
             'Expected result' => '{"type":"number","maximum":10.6}',
@@ -44,6 +48,10 @@ final class NumberSchemaTest extends TestCase
         yield 'Schema with exclusive maximum constraints' => [
             'Object' => new NumberSchema(exclusiveMaximum: 12.1),
             'Expected result' => '{"type":"number","exclusiveMaximum":12.1}',
+        ];
+        yield 'Schema with exclusive maximum constraints (Draft-4 style)' => [
+            'Object' => new NumberSchema(maximum: 12.1, exclusiveMaximum: true),
+            'Expected result' => '{"type":"number","maximum":12.1,"exclusiveMaximum":true}',
         ];
     }
 }
