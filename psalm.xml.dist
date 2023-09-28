@@ -18,8 +18,6 @@
                 <file name="src/String/StringSchema.php"/>
                 <file name="src/Numeric/IntegerSchema.php"/>
                 <file name="src/Numeric/NumberSchema.php"/>
-                <file name="src/Enum/EnumSchema.php"/>
-                <file name="src/Enum/EnumSchema.php"/>
                 <file name="src/Composition/NotSchema.php"/>
                 <file name="src/Composition/AllOfSchema.php"/>
                 <file name="src/Composition/AnyOfSchema.php"/>
