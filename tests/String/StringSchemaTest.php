@@ -220,7 +220,10 @@ final class StringSchemaTest extends TestCase
         new StringSchema(minLength: 100, maxLength: 5);
     }
 
-    #[DataProvider('valid_string_schema_provider')]
+    #[
+        DataProvider('valid_string_schema_provider'),
+        DataProvider('valid_string_generic_schema_provider'),
+    ]
     public function test_json_schema_format(StringSchema $schemaObject, string $expectedResult): void
     {
         self::assertSame(
@@ -250,6 +253,50 @@ final class StringSchemaTest extends TestCase
         yield 'Schema with format constraint' => [
             'Object' => new StringSchema(format: StringFormat::Email),
             'Expected result' => '{"type":"string","format":"email"}',
+        ];
+    }
+
+    public static function valid_string_generic_schema_provider(): \Generator
+    {
+        yield 'Schema without constraints. With title' => [
+            'Object' => new StringSchema(title: 'Schema title'),
+            'Expected result' => '{"type":"string","title":"Schema title"}',
+        ];
+        yield 'Schema without constraints. With description' => [
+            'Object' => new StringSchema(description: 'Schema without constraints'),
+            'Expected result' => '{"type":"string","description":"Schema without constraints"}',
+        ];
+        yield 'Schema without constraints. With comment' => [
+            'Object' => new StringSchema(comment: 'Comment test'),
+            'Expected result' => '{"type":"string","comment":"Comment test"}',
+        ];
+        yield 'Schema without constraints. With default value' => [
+            'Object' => new StringSchema(default: 'Nameless'),
+            'Expected result' => '{"type":"string","default":"Nameless"}',
+        ];
+        yield 'Schema without constraints. With const value' => [
+            'Object' => new StringSchema(const: 'None'),
+            'Expected result' => '{"type":"string","const":"None"}',
+        ];
+        yield 'Schema without constraints. With examples' => [
+            'Object' => new StringSchema(examples: ['Monday', 'Sunday']),
+            'Expected result' => '{"type":"string","examples":["Monday","Sunday"]}',
+        ];
+        yield 'Schema without constraints. Read only' => [
+            'Object' => new StringSchema(readOnly: true),
+            'Expected result' => '{"type":"string","readOnly":true}',
+        ];
+        yield 'Schema without constraints. Write only' => [
+            'Object' => new StringSchema(writeOnly: true),
+            'Expected result' => '{"type":"string","writeOnly":true}',
+        ];
+        yield 'Schema without constraints. Deprecated' => [
+            'Object' => new StringSchema(deprecated: true),
+            'Expected result' => '{"type":"string","deprecated":true}',
+        ];
+        yield 'Schema with enum constraint.' => [
+            'Object' => new StringSchema(enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']),
+            'Expected result' => '{"type":"string","enum":["Monday","Tuesday","Wednesday","Thursday","Friday"]}',
         ];
     }
 }

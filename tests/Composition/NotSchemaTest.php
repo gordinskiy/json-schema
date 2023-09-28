@@ -6,7 +6,7 @@ namespace Composition;
 
 use Gordinskiy\JsonSchema\Boolean\BooleanSchema;
 use Gordinskiy\JsonSchema\Composition\NotSchema;
-use Gordinskiy\JsonSchema\Enum\EnumSchema;
+use Gordinskiy\JsonSchema\GenericSchema;
 use Gordinskiy\JsonSchema\Numeric\IntegerSchema;
 use Gordinskiy\JsonSchema\Numeric\NumberSchema;
 use Gordinskiy\JsonSchema\String\StringSchema;
@@ -52,7 +52,7 @@ final class NotSchemaTest extends TestCase
         ];
         yield 'Value is not from Enum' => [
             'value' => 'Monday',
-            'schema' => new NotSchema(new EnumSchema('March', 'April', 'May')),
+            'schema' => new NotSchema(new GenericSchema(enum: ['March', 'April', 'May'])),
         ];
         yield 'Double negation' => [
             'value' => 25,
@@ -96,7 +96,7 @@ final class NotSchemaTest extends TestCase
         ];
         yield 'Value from Enum is not from Enum' => [
             'value' => 'April',
-            'schema' => new NotSchema(new EnumSchema('March', 'April', 'May')),
+            'schema' => new NotSchema(new GenericSchema(enum: ['March', 'April', 'May'])),
         ];
     }
 
