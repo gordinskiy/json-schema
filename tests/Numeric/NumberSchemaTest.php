@@ -7,6 +7,7 @@ namespace Gordinskiy\Tests\Numeric;
 use Gordinskiy\JsonSchema\Numeric\NumberSchema;
 use Gordinskiy\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Webmozart\Assert\InvalidArgumentException;
 
 final class NumberSchemaTest extends TestCase
 {
@@ -100,5 +101,21 @@ final class NumberSchemaTest extends TestCase
             'Object' => new NumberSchema(enum: [-100.1, 0, 1.25, 2.3, 3.333, 4.25, 5]),
             'Expected result' => '{"type":"number","enum":[-100.1,0,1.25,2.3,3.333,4.25,5]}',
         ];
+    }
+
+    public function test_example_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a numeric. Got: string');
+
+        new NumberSchema(examples: [4.25, 'Invalid value']);
+    }
+
+    public function test_enum_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a numeric. Got: string');
+
+        new NumberSchema(enum: [9.99, 'Invalid value']);
     }
 }
