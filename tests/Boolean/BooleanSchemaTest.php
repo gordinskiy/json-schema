@@ -7,6 +7,7 @@ namespace Gordinskiy\Tests\Boolean;
 use Gordinskiy\JsonSchema\Boolean\BooleanSchema;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Gordinskiy\Tests\TestCase;
+use Webmozart\Assert\InvalidArgumentException;
 
 final class BooleanSchemaTest extends TestCase
 {
@@ -112,5 +113,21 @@ final class BooleanSchemaTest extends TestCase
             'Object' => new BooleanSchema(enum: [false, true]),
             'Expected result' => '{"type":"boolean","enum":[false,true]}',
         ];
+    }
+
+    public function test_example_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a boolean. Got: string');
+
+        new BooleanSchema(examples: [true, 'Invalid value']);
+    }
+
+    public function test_enum_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a boolean. Got: string');
+
+        new BooleanSchema(enum: [false, 'Invalid value']);
     }
 }

@@ -220,6 +220,22 @@ final class StringSchemaTest extends TestCase
         new StringSchema(minLength: 100, maxLength: 5);
     }
 
+    public function test_example_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a string. Got: double');
+
+        new StringSchema(examples: ['Valid value', 3.14]);
+    }
+
+    public function test_enum_of_wrong_type(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected a string. Got: double');
+
+        new StringSchema(enum: ['Valid value', 3.14]);
+    }
+
     #[
         DataProvider('valid_string_schema_provider'),
         DataProvider('valid_string_generic_schema_provider'),
