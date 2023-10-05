@@ -15,6 +15,7 @@
         <UnusedClass>
             <errorLevel type="suppress">
                 <file name="src/Boolean/BooleanSchema.php"/>
+                <file name="src/Object/ObjectSchema.php"/>
                 <file name="src/String/StringSchema.php"/>
                 <file name="src/Numeric/IntegerSchema.php"/>
                 <file name="src/Numeric/NumberSchema.php"/>
@@ -27,8 +28,11 @@
 
         <UnusedMethod>
             <errorLevel type="suppress">
+                <file name="src/Object/ObjectProperties.php"/>
+                <file name="src/Object/ObjectProperty.php"/>
                 <file name="src/Numeric/AbstractNumericSchema.php"/>
                 <file name="src/Composition/AbstractCompositionSchema.php"/>
+                <file name="src/String/StringSchema.php"/>
             </errorLevel>
         </UnusedMethod>
     </issueHandlers>
