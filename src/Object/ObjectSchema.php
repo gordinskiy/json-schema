@@ -30,7 +30,6 @@ final readonly class ObjectSchema extends GenericSchema
         private ?array $required = null,
         private bool|SchemaNodeInterface|null $additionalProperties = null,
         private ?bool $unevaluatedProperties = null,
-
         ?string $title = null,
         ?string $description = null,
         ?string $comment = null,

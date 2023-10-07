@@ -30,7 +30,6 @@ final readonly class ArraySchema extends GenericSchema
         private ?int $minItems = null,
         private ?int $maxItems = null,
         private ?bool $uniqueItems = null,
-
         ?string $title = null,
         ?string $description = null,
         ?string $comment = null,

@@ -26,7 +26,8 @@ final class AllOfSchemaTest extends TestCase
         yield 'Email with minimal length' => [
             'Object' => new AllOfSchema(
                 new StringSchema(format: StringFormat::Email),
-                new StringSchema(minLength: 16)),
+                new StringSchema(minLength: 16)
+            ),
             'Expected result' => '{"allOf":[{"type":"string","format":"email"},{"type":"string","minLength":16}]}',
         ];
     }
