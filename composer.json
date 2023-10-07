@@ -22,7 +22,8 @@
         "justinrainbow/json-schema": "^5.2",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.1",
-        "vimeo/psalm": "^5.11"
+        "vimeo/psalm": "^5.11",
+        "friendsofphp/php-cs-fixer": "^3.34"
     },
     "autoload": {
         "psr-4": {
