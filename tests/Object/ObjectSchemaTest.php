@@ -123,15 +123,19 @@ final class ObjectSchemaTest extends TestCase
             'Expected result' => '{"type":"object","comment":"Comment test"}',
         ];
         yield 'Schema without constraints. With default value' => [
-            'Object' => new ObjectSchema(default: new class {}),
+            'Object' => new ObjectSchema(default: new class () {}),
             'Expected result' => '{"type":"object","default":{}}',
         ];
         yield 'Schema without constraints. With const value' => [
-            'Object' => new ObjectSchema(const: new class {public $value = 3.14;}),
+            'Object' => new ObjectSchema(const: new class () {
+                public $value = 3.14;
+            }),
             'Expected result' => '{"type":"object","const":{"value":3.14}}',
         ];
         yield 'Schema without constraints. With examples' => [
-            'Object' => new ObjectSchema(examples: [new class {public $id = 1;}]),
+            'Object' => new ObjectSchema(examples: [new class () {
+                public $id = 1;
+            }]),
             'Expected result' => '{"type":"object","examples":[{"id":1}]}',
         ];
         yield 'Schema without constraints. Read only' => [
@@ -147,7 +151,11 @@ final class ObjectSchemaTest extends TestCase
             'Expected result' => '{"type":"object","deprecated":true}',
         ];
         yield 'Schema with enum constraint.' => [
-            'Object' => new ObjectSchema(enum: [new class {public $id = 1;},new class {public $id = 2;}]),
+            'Object' => new ObjectSchema(enum: [new class () {
+                public $id = 1;
+            }, new class () {
+                public $id = 2;
+            }]),
             'Expected result' => '{"type":"object","enum":[{"id":1},{"id":2}]}',
         ];
     }

@@ -31,11 +31,11 @@ final readonly class BooleanSchema extends GenericSchema
         ?bool $deprecated = null,
     ) {
         if (!empty($examples)) {
-            array_walk($examples, static fn($example) => Assert::boolean($example));
+            array_walk($examples, static fn ($example) => Assert::boolean($example));
         }
 
         if (!empty($enum)) {
-            array_walk($enum, static fn($value) => Assert::boolean($value));
+            array_walk($enum, static fn ($value) => Assert::boolean($value));
         }
 
         parent::__construct(

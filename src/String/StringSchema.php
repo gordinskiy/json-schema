@@ -23,7 +23,6 @@ final readonly class StringSchema extends GenericSchema
         private ?int $maxLength = null,
         private ?string $pattern = null,
         private ?StringFormat $format = null,
-
         ?string $title = null,
         ?string $description = null,
         ?string $comment = null,
@@ -58,11 +57,11 @@ final readonly class StringSchema extends GenericSchema
         }
 
         if (!empty($examples)) {
-            array_walk($examples, static fn($example) => Assert::string($example));
+            array_walk($examples, static fn ($example) => Assert::string($example));
         }
 
         if (!empty($enum)) {
-            array_walk($enum, static fn($value) => Assert::string($value));
+            array_walk($enum, static fn ($value) => Assert::string($value));
         }
 
         parent::__construct(

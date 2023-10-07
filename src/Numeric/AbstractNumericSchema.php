@@ -23,7 +23,6 @@ abstract readonly class AbstractNumericSchema extends GenericSchema
         private int|float|bool|null $exclusiveMinimum = null,
         private int|float|null $maximum = null,
         private int|float|bool|null $exclusiveMaximum = null,
-
         ?string $title = null,
         ?string $description = null,
         ?string $comment = null,
@@ -36,11 +35,11 @@ abstract readonly class AbstractNumericSchema extends GenericSchema
         ?bool $deprecated = null,
     ) {
         if (!empty($examples)) {
-            array_walk($examples, static fn($example) => Assert::numeric($example));
+            array_walk($examples, static fn ($example) => Assert::numeric($example));
         }
 
         if (!empty($enum)) {
-            array_walk($enum, static fn($value) => Assert::numeric($value));
+            array_walk($enum, static fn ($value) => Assert::numeric($value));
         }
 
         parent::__construct(

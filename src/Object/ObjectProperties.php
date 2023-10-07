@@ -26,7 +26,7 @@ final readonly class ObjectProperties implements SchemaNodeInterface
     {
         return array_merge(
             ...array_map(
-                static fn(ObjectProperty $property) => $property->jsonSerialize(),
+                static fn (ObjectProperty $property) => $property->jsonSerialize(),
                 $this->properties,
             ),
         );
