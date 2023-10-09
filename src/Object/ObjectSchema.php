@@ -86,7 +86,7 @@ final readonly class ObjectSchema extends GenericSchema
             'propertyNames' => $this->propertyNames,
             'minProperties' => $this->minProperties,
             'maxProperties' => $this->maxProperties,
-            'required' => $this->required,
+            'required' => is_array($this->required) ? array_values($this->required) : null,
             'additionalProperties' => $this->additionalProperties,
             'unevaluatedProperties' => $this->unevaluatedProperties,
 
