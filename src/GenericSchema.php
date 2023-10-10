@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Gordinskiy\JsonSchema;
 
-use Webmozart\Assert\Assert;
-
 /**
  * @template Type
  */
@@ -29,12 +27,6 @@ readonly class GenericSchema implements SchemaNodeInterface
         private ?bool $writeOnly = null,
         private ?bool $deprecated = null,
     ) {
-        if (get_class($this) === self::class) {
-            Assert::notEmpty(
-                array_filter(func_get_args(), static fn ($value) => $value !== null),
-                'At least one generic schema argument must be provided.'
-            );
-        }
     }
 
     public function jsonSerialize(): array
