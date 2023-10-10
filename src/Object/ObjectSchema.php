@@ -8,7 +8,6 @@ use Gordinskiy\JsonSchema\GenericSchema;
 use Gordinskiy\JsonSchema\NodeType;
 use Gordinskiy\JsonSchema\SchemaNodeInterface;
 use Gordinskiy\JsonSchema\String\StringSchema;
-use Webmozart\Assert\Assert;
 
 /**
  * @link https://json-schema.org/understanding-json-schema/reference/object.html
@@ -41,28 +40,6 @@ final readonly class ObjectSchema extends GenericSchema
         ?bool $writeOnly = null,
         ?bool $deprecated = null,
     ) {
-        if ($minProperties !== null) {
-            Assert::natural(
-                value: $minProperties,
-                message: 'Object minProperties constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($maxProperties !== null) {
-            Assert::natural(
-                value: $maxProperties,
-                message: 'Object maxProperties constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($minProperties !== null && $maxProperties !== null) {
-            Assert::greaterThanEq(
-                value: $maxProperties,
-                limit: $minProperties,
-                message: 'Object minProperties constrain cant be greater than maxProperties constrain.'
-            );
-        }
-
         parent::__construct(
             title: $title,
             description: $description,

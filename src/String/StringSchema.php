@@ -34,28 +34,6 @@ final readonly class StringSchema extends GenericSchema
         ?bool $writeOnly = null,
         ?bool $deprecated = null,
     ) {
-        if ($minLength !== null) {
-            Assert::natural(
-                value: $minLength,
-                message: 'String min length constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($maxLength !== null) {
-            Assert::natural(
-                value: $maxLength,
-                message: 'String max length constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($minLength !== null && $maxLength !== null) {
-            Assert::greaterThanEq(
-                value: $maxLength,
-                limit: $minLength,
-                message: 'String min length constrain cant be greater than max length constrain.'
-            );
-        }
-
         if (!empty($examples)) {
             array_walk($examples, static fn ($example) => Assert::string($example));
         }
