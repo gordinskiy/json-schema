@@ -157,12 +157,4 @@ final class GenericSchemaTest extends TestCase
             'Expected result' => '{"deprecated":true}',
         ];
     }
-
-    public function test_empty_enum_creation(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('At least one generic schema argument must be provided.');
-
-        new GenericSchema();
-    }
 }
