@@ -16,6 +16,7 @@
             <errorLevel type="suppress">
                 <file name="src/Array/ArraySchema.php"/>
                 <file name="src/Boolean/BooleanSchema.php"/>
+                <file name="src/Null/NullSchema.php"/>
                 <file name="src/Object/ObjectSchema.php"/>
                 <file name="src/String/StringSchema.php"/>
                 <file name="src/Numeric/IntegerSchema.php"/>
