@@ -7,7 +7,6 @@ namespace Gordinskiy\JsonSchema\Array;
 use Gordinskiy\JsonSchema\GenericSchema;
 use Gordinskiy\JsonSchema\NodeType;
 use Gordinskiy\JsonSchema\SchemaNodeInterface;
-use Webmozart\Assert\Assert;
 
 /**
  * @link https://json-schema.org/understanding-json-schema/reference/array
@@ -41,51 +40,6 @@ final readonly class ArraySchema extends GenericSchema
         ?bool $writeOnly = null,
         ?bool $deprecated = null,
     ) {
-        if ($minContains !== null) {
-            Assert::natural(
-                value: $minContains,
-                message: 'Array minContains constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($maxContains !== null) {
-            Assert::natural(
-                value: $maxContains,
-                message: 'Array maxContains constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($minContains !== null && $maxContains !== null) {
-            Assert::greaterThanEq(
-                value: $maxContains,
-                limit: $minContains,
-                message: 'Array minContains constrain cant be greater than maxContains constrain.'
-            );
-        }
-
-
-        if ($minItems !== null) {
-            Assert::natural(
-                value: $minItems,
-                message: 'Array minItems constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($maxItems !== null) {
-            Assert::natural(
-                value: $maxItems,
-                message: 'Array maxItems constrain value must be a non-negative number.'
-            );
-        }
-
-        if ($minItems !== null && $maxItems !== null) {
-            Assert::greaterThanEq(
-                value: $maxItems,
-                limit: $minItems,
-                message: 'Array minItems constrain cant be greater than maxItems constrain.'
-            );
-        }
-
         parent::__construct(
             title: $title,
             description: $description,

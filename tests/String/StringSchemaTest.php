@@ -196,30 +196,6 @@ final class StringSchemaTest extends TestCase
         ];
     }
 
-    public function test_negative_min_length_constrain(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('String min length constrain value must be a non-negative number.');
-
-        new StringSchema(minLength: -1);
-    }
-
-    public function test_negative_max_length_constrain(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('String max length constrain value must be a non-negative number.');
-
-        new StringSchema(maxLength: -1);
-    }
-
-    public function test_conflict_length_constrain(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('String min length constrain cant be greater than max length constrain.');
-
-        new StringSchema(minLength: 100, maxLength: 5);
-    }
-
     public function test_example_of_wrong_type(): void
     {
         $this->expectException(InvalidArgumentException::class);

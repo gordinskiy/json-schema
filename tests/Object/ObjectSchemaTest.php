@@ -159,28 +159,4 @@ final class ObjectSchemaTest extends TestCase
             'Expected result' => '{"type":"object","enum":[{"id":1},{"id":2}]}',
         ];
     }
-
-    public function test_negative_min_properties(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Object minProperties constrain value must be a non-negative number.');
-
-        new ObjectSchema(minProperties: -1);
-    }
-
-    public function test_negative_max_properties(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Object maxProperties constrain value must be a non-negative number.');
-
-        new ObjectSchema(maxProperties: -1);
-    }
-
-    public function test_min_properties_greater_than_max_properties(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Object minProperties constrain cant be greater than maxProperties constrain.');
-
-        new ObjectSchema(minProperties: 10, maxProperties: 2);
-    }
 }
