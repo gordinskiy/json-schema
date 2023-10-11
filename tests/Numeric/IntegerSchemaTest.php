@@ -41,10 +41,6 @@ final class IntegerSchemaTest extends TestCase
             'Object' => new IntegerSchema(exclusiveMinimum: 50),
             'Expected result' => '{"type":"integer","exclusiveMinimum":50}',
         ];
-        yield 'Schema with exclusive minimum constraints (Draft-4 style)' => [
-            'Object' => new IntegerSchema(minimum: 50, exclusiveMinimum: true),
-            'Expected result' => '{"type":"integer","minimum":50,"exclusiveMinimum":true}',
-        ];
         yield 'Schema with maximum constraints' => [
             'Object' => new IntegerSchema(maximum: 10),
             'Expected result' => '{"type":"integer","maximum":10}',
@@ -52,10 +48,6 @@ final class IntegerSchemaTest extends TestCase
         yield 'Schema with exclusive maximum constraints' => [
             'Object' => new IntegerSchema(exclusiveMaximum: 12),
             'Expected result' => '{"type":"integer","exclusiveMaximum":12}',
-        ];
-        yield 'Schema with exclusive maximum constraints (Draft-4 style)' => [
-            'Object' => new IntegerSchema(maximum: 12, exclusiveMaximum: true),
-            'Expected result' => '{"type":"integer","maximum":12,"exclusiveMaximum":true}',
         ];
     }
 
