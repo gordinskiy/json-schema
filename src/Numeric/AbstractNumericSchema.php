@@ -20,9 +20,9 @@ abstract readonly class AbstractNumericSchema extends GenericSchema
     public function __construct(
         private int|float|null $multipleOf = null,
         private int|float|null $minimum = null,
-        private int|float|bool|null $exclusiveMinimum = null,
+        private int|float|null $exclusiveMinimum = null,
         private int|float|null $maximum = null,
-        private int|float|bool|null $exclusiveMaximum = null,
+        private int|float|null $exclusiveMaximum = null,
         ?string $title = null,
         ?string $description = null,
         ?string $comment = null,
